@@ -1,10 +1,9 @@
-import React from "react";
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  return options.map(key => (
+    <button key={key} type="button" onClick={() => onLeaveFeedback(key)}>
+      {key}
+    </button>
+  ));
+};
 
-const FeedbackOptions = ({options,onLeaveFeedback}) => {
-  return options.map(name => (
-      <button key={name} type="button"  onClick={onLeaveFeedback}>
-        {name}
-      </button>))
-}
-
-export default FeedbackOptions
+export default FeedbackOptions;

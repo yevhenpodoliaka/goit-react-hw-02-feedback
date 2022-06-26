@@ -10,8 +10,9 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
+
   onButtonClick = e => {
-    const key =e.currentTarget.name
+    const key = e.currentTarget.name;
     this.setState(prevState => {
       return {
         [key]: prevState[key] + 1,
@@ -38,14 +39,17 @@ class App extends Component {
         </Section>
 
         <Section title="Statistic">
-     {  this.countTotalFeedback() ? (<Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />):( <Notification message="There is no feedback"></Notification>)}
-      
+          {this.countTotalFeedback() ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback"></Notification>
+          )}
         </Section>
       </>
     );

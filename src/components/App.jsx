@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import FeedbackOptions from './Feedback/FeedbackOptions';
-import Statistics from './Feedback/Statistics';
-import Section from './Feedback/Section';
-import Notification from './Feedback/Notafication';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import Statistics from './Statistics/Statistics';
+import Section from './Section/Section';
+import Notification from './Notafication/Notafication';
 
 class App extends Component {
   state = {
@@ -10,7 +10,8 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  onButtonClick = key => {
+  onButtonClick = e => {
+    const key =e.currentTarget.name
     this.setState(prevState => {
       return {
         [key]: prevState[key] + 1,
@@ -37,14 +38,14 @@ class App extends Component {
         </Section>
 
         <Section title="Statistic">
-          <Statistics
+     {  this.countTotalFeedback() ? (<Statistics
             good={good}
             neutral={neutral}
             bad={bad}
             total={this.countTotalFeedback()}
             positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
-          <Notification message="There is no feedback"></Notification>
+          />):( <Notification message="There is no feedback"></Notification>)}
+      
         </Section>
       </>
     );

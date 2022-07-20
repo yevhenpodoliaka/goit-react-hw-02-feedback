@@ -27,13 +27,17 @@ class App extends Component {
     const { good, bad, neutral } = this.state;
     return Math.ceil((good / (good + bad + neutral)) * 100);
   };
+  optionsNames = () => {
+    const options = Object.keys(this.state);
+    return options;
+  };
   render() {
     const { good, bad, neutral } = this.state;
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={Object.keys(this.state)}
+            options={this.optionsNames()}
             onLeaveFeedback={this.onButtonClick}
           />
         </Section>
